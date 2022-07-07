@@ -1,0 +1,14 @@
+{
+  "name": "lista_de_tarefas",
+  "version": "1.0.0",
+  "description": "Lista de tarefas em electron",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Matheus Willamy",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^18.2.4"
+  }
+}

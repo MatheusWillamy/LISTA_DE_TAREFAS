@@ -1,0 +1,288 @@
+html, body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #16162c;
+}
+
+/* CARD ADICIONAR TAREFA */
+div#adicionar_tarefa{
+    background-color: white;
+    width: 300px;
+    height: 350px;
+    
+    margin-left:20px;
+    margin-top: 30px;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow:10px 5px 15px rgba(0, 0, 0, 0.3); 
+}
+.titulo_tarefa{
+    width: 280px;
+    height: 30px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-shadow:10px 5px 15px rgba(0, 0, 0, 0.3); 
+    
+}
+/* caixa de titulo */
+.texto{
+    border: 0;
+    background-color: #19185100;
+    width: 260px;
+    
+}
+.texto:focus, input:focus{
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+input#titulo_tarefa{
+    font-size: 18px;
+    font-family: 'Radio Canada', sans-serif;
+}
+.descricao_tarefa{
+    width: 280px;
+    height: 150px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-shadow:10px 5px 15px rgba(0, 0, 0, 0.3); 
+    margin-top: 10px;
+}
+textarea#descricao_tarefa{
+    width: 260px;
+    height: 90%;
+    resize: none;
+    font-size: 14px;
+    color: rgb(12, 1, 1);
+    border: 0;
+    background-color: #19185100;
+    font-family: 'Radio Canada', sans-serif;
+}
+
+/* cor do card da tarefa */
+.selecao_de_cor_do_card{
+    width: 280px;
+    margin:10px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow:10px 5px 15px rgba(0, 0, 0, 0.3); 
+    display: flex;
+    flex-direction: column;
+}
+.titulo_cor_do_card{
+    font-size: 18px;
+    font-family: 'Radio Canada', sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #4e4b4e;
+}
+.cor_tarefa{
+    width: 260px;
+    height: auto;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    border-radius: 15px;
+    
+}
+input#cor_01{
+    background-color: #2b28e6;
+}
+input#cor_02{
+    background-color: #2ad89e;
+}
+input#cor_03{
+    background-color: #177da5;
+}
+input#cor_04{
+    background-color: #17ac17;
+}
+input#cor_05{
+    background-color: #a59c17;
+}
+input#cor_06{
+    background-color: #e48226;
+}
+input#cor_07{
+    background-color: #a53f17;
+}
+input#cor_08{
+    background-color: #e4248e;
+}
+input#cor_09{
+    background-color: #c91e1e;
+}
+input#cor_10{
+    background-color: #23a0e9;
+}
+input#cor_11{
+    background-color: #a51765;
+}
+input#cor_12{
+    background-color: #a51717;
+}
+input#cor_13{
+    background-color: #e6510b;
+}
+input#cor_14{
+    background-color: #18d838;
+}
+
+input.cor{
+    appearance: none;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    margin: 5px;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cor:before{
+    content:"" ;
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    border-style: solid;
+    border-color: rgb(24, 16, 37);
+    border-radius: 50%;
+    opacity: 0;
+}
+.cor:checked::before{
+    opacity: 1;
+}
+
+/* ============================== */
+/* BOTAO SALVAR */
+/* ========================= */
+/*  */
+
+.container_salvar{
+    height: 30px;
+    
+    
+}
+.botao_salvar_tarefa{
+    height: 50px;
+    width: 110px;
+    background-color: #169727;
+    border-radius: 30px;
+    margin-left: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Fredoka One', cursive;
+    color: white;
+}
+.botao_salvar_tarefa:hover{
+    background-color: #0d5c30;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    height: 92vh;
+
+}
+
+
+/* LINHA DE APRESENTAÇÃO DE CARDSD GERADOS */
+
+.linha_de_apresentação{
+    width: auto;
+    height: max-content;
+    border-style: solid;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    
+
+}
+
+/* ============================= */
+/* ESTILOS DE CARD */
+/* ========================== */
+.card{
+    background-color: rgb(255, 255, 255);
+    width: 330px;
+    height: 235px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    margin-top: 20px;
+    margin-left: 20px;
+    
+     
+}
+div#titulo_card{
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-color: rgba(216, 214, 214, 0);
+    height: auto;
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 10px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow:10px 5px 15px rgba(0, 0, 0, 0.3); 
+    
+}
+div#nome_card{
+    margin-left: 5px;   
+}
+div#descricao{
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-color: rgba(216, 214, 214, 0);
+    margin-top: 10px;
+    margin: 10px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow:10px 5px 15px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+
+}
+.notificacao_card{
+    background-color: rgb(21, 255, 0);
+    height: 40px;
+    width: 80px;
+    border-radius: 15px;
+    margin-right: 10px;
+    box-shadow:0px 8px 15px rgb(21, 255, 0);
+    font-family: 'Fredoka One', cursive;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}

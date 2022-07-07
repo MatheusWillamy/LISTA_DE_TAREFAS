@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="PT">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2? família=Radio+Canada:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../../componentes/barra_de_navegação/index.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <main class="main">
+        <div id="navegação">
+            <div id="casa" class="navegacao">
+                <img src="../../componentes/imagens/navegação/casa.png" class="icone" >
+            </div>
+            <div id="dispositivos" class="navegacao">
+                <img src="../../componentes/imagens/navegação/cardapio.png" class="icone">
+            </div>
+            <div id="adicionar" class="navegacao" onclick="window.location='../adicionar/index.html'">
+                <img src="../../componentes/imagens/navegação/mais.png" class="icone">
+            </div>
+            <div id="configuracoes" class="navegacao" onclick="window.location='../definicoes/index.html'" >
+                <img src="../../componentes/imagens/navegação/definicoes.png" class="icone" >
+            </div>
+            <div id="sair" class="navegacao">
+                <img src="../../componentes/imagens/navegação/saida.png" class="icone">
+            </div>
+        </div>
+        <div id="adicionar_tarefa">
+            <div class="titulo_tarefa">
+                <input type="text" class="texto" id="titulo_tarefa" placeholder="Tarefa">
+            </div>
+            <div class="descricao_tarefa">
+                <textarea class="texto" id="descricao_tarefa" placeholder="Descrição"></textarea>
+            </div>
+            <div class="selecao_de_cor_do_card">
+                <div class="titulo_cor_do_card">Selecione uma cor </div>
+                <div class="cor_tarefa">
+                    
+                    <input type="radio" name="cor" id="cor_01" class="cor" value="#2b28e6" checked>
+                    <input type="radio" name="cor" id="cor_02" class="cor" value="#2ad89e">
+                    <input type="radio" name="cor" id="cor_03" class="cor" value="#177da5">
+                    <input type="radio" name="cor" id="cor_04" class="cor" value="#17ac17">
+                    <input type="radio" name="cor" id="cor_05" class="cor" value="#a59c17">
+                    <input type="radio" name="cor" id="cor_06" class="cor" value="#e48226">
+                    <input type="radio" name="cor" id="cor_07" class="cor" value="#a53f17">
+                    <input type="radio" name="cor" id="cor_08" class="cor" value="#e4248e">
+                    <input type="radio" name="cor" id="cor_09" class="cor" value="#c91e1e">
+                    <input type="radio" name="cor" id="cor_10" class="cor" value="#23a0e9">
+                    <input type="radio" name="cor" id="cor_11" class="cor" value="#a51765">
+                    <input type="radio" name="cor" id="cor_12" class="cor" value="#a51717">
+                    <input type="radio" name="cor" id="cor_13" class="cor" value="#e6510b">
+                    <input type="radio" name="cor" id="cor_14" class="cor" value="#18d838">
+                </div>
+                
+            </div>
+            <div class="container_salvar">
+                <div class="botao_salvar_tarefa" id="salvar">SALVAR</div>
+            </div>
+        </div>
+        <div class="linha_de_apresentação" id="linha_de_apresentacao">
+            
+        </div>
+       <script>
+            const card_adicionar = window.document.getElementById("adicionar_tarefa")
+            const cor_01 = document.getElementById("cor_01")
+            const cor_02 = document.getElementById("cor_02")
+            const cor_03 = document.getElementById("cor_03")
+            const cor_04 = document.getElementById("cor_04")
+            const cor_05 = document.getElementById("cor_05")
+            const cor_06 = document.getElementById("cor_06")
+            const cor_07 = document.getElementById("cor_07")
+            const cor_08 = document.getElementById("cor_08")
+            const cor_09 = document.getElementById("cor_09")
+            const cor_10 = document.getElementById("cor_10")
+            const cor_11 = document.getElementById("cor_11")
+            const cor_12 = document.getElementById("cor_12")
+            const cor_13 = document.getElementById("cor_13")
+            const cor_14 = document.getElementById("cor_14")
+            //===================================================
+            //ANIMAÇAO DE MUDANÇA DE COR DE CARD NA SELEÇAO DE COR
+            //==================================================
+
+
+
+            cor_01.onclick = function(){alterar_cor_card("#2b28e6")}
+            cor_02.onclick = function(){alterar_cor_card("#2ad89e")}
+            cor_03.onclick = function(){alterar_cor_card("#177da5")}
+            cor_04.onclick = function(){alterar_cor_card("#17ac17")}
+            cor_05.onclick = function(){alterar_cor_card("#a59c17")}
+            cor_06.onclick = function(){alterar_cor_card("#e48226")}
+            cor_07.onclick = function(){alterar_cor_card("#a53f17")}
+            cor_08.onclick = function(){alterar_cor_card("#e4248e")}
+            cor_09.onclick = function(){alterar_cor_card("#c91e1e")}
+            cor_10.onclick = function(){alterar_cor_card("#23a0e9")}
+            cor_11.onclick = function(){alterar_cor_card("#a51765")}
+            cor_12.onclick = function(){alterar_cor_card("#a51717")}
+            cor_13.onclick = function(){alterar_cor_card("#e6510b")}
+            cor_14.onclick = function(){alterar_cor_card("#18d838")}
+
+            function alterar_cor_card(cor){card_adicionar.style.background = `${cor}`; salvar_cor_card(cor)}
+
+            // ================================
+            // FUNÇAO SALVAR NOVO CARD 
+            // ================================
+
+            const {ipcRenderer} = require('electron');
+            const salvar = document.getElementById("salvar")
+            salvar.addEventListener("click", salvar_novo_card)
+
+            
+            var id = 1
+            var titulo_tarefa = document.getElementById("titulo_tarefa")
+            var descricao_tarefa = document.getElementById("descricao_tarefa")
+            var cor_tarefa = "#ffffff"
+            
+
+            function salvar_cor_card(cor){ cor_tarefa = `${cor}`}
+            
+            var lista_de_cards =""
+            var estado = 1
+            x=0
+            var lista_de_cards_json=""
+            function salvar_novo_card(){
+                //ESTADO DO CAR
+                //1 - NORMAL, 2-EXECUTANDO, 3-CONCLUIDO
+                
+                ipcRenderer.send('chamada_de_cards','chamada_de_cards_para_salvamento')
+            }
+            
+            function salvar_card(dados){
+                console.log(dados)
+                if (dados !== ""){
+                    lista_de_cards_json = JSON.parse(dados)
+                    var card = `{"id": ${id},"titulo": "${titulo_tarefa.value}","descricao": "${descricao_tarefa.value}","cor": "${cor_tarefa}", "estado": ${estado}}`
+                    
+                    id++
+                    
+                    
+                    var final =""
+                    lista_de_cards_json.forEach(function(valor, indice) {
+                        
+                        var esqueleto = `{"id": ${valor.id},"titulo": "${valor.titulo}","descricao": "${valor.descricao}","cor": "${valor.cor}", "estado": ${valor.estado}},`
+                        final = final + esqueleto
+                        // console.log(final)
+                        // console.log(valor.id)
+                        // console.log(valor.titulo)
+                        // console.log(valor.descricao)
+                        // console.log(valor.cor)
+                        // console.log(valor.estado)
+                        
+                    });
+                    lista_de_cards = `[${final}${card}]`
+                    
+                    console.log(lista_de_cards)
+                    console.log("Salvar")
+                    
+                    //salvando_todos_os_cards
+                    ipcRenderer.send('salvar_lista_de_tarefas', lista_de_cards)
+                }
+                else{
+
+                    var card = `{"id": ${id},"titulo": "${titulo_tarefa.value}","descricao": "${descricao_tarefa.value}","cor": "${cor_tarefa}", "estado": ${estado}}`
+                    lista_de_cards = `[${card}]`
+                    
+                    console.log(lista_de_cards)
+                    console.log("Salvar")
+    
+                    //salvando_todos_os_cards
+                    ipcRenderer.send('salvar_lista_de_tarefas', lista_de_cards)
+                }
+                chamada_de_cards()
+                
+            }
+            ipcRenderer.on('chamada_de_cards_para_salvamento_res',function(event, dados){ 
+                    
+                salvar_card(dados)
+                    
+            })
+            //CHAMADA DE CARDS
+            //
+            var linha_de_apresentação = document.getElementById("linha_de_apresentacao")
+            chamada_de_cards()
+            
+            
+            
+            function chamada_de_cards(){
+                ipcRenderer.send('chamada_de_cards','chamada_de_cards')
+                console.log("chamada de dados")
+                
+            }
+            ipcRenderer.on('chamada_de_dados_res',function(event, dados){ 
+                
+                apresentacao_de_cards(dados)
+                    
+            })
+                
+                
+                
+                
+            function apresentacao_de_cards(lista_de_cards_json){
+                if (lista_de_cards_json !== ""){
+                    
+                    var final =""
+                    
+                    lista_de_cards_json = JSON.parse(lista_de_cards_json)
+                    lista_de_cards_json.forEach(function(valor, indice) {
+                        
+                            var esqueleto = `<div id="card_01" class="card" style="background-color:${valor.cor}";>
+                        <div id="titulo_card">
+                            <div id="nome_card">${valor.titulo}</div>
+                            <div id="notificacao_card_02" class="notificacao_card"></div>
+                        </div>
+                        <div id="descricao">${valor.descricao}</div>  
+                            </div>
+                        `
+                        
+                        final = final + esqueleto
+                        // console.log(final)
+                        // console.log(valor.id)
+                        // console.log(valor.titulo)
+                        // console.log(valor.descricao)
+                        // console.log(valor.cor)
+                        // console.log(valor.estado)
+                        
+                    });
+                    linha_de_apresentação.innerHTML = (final)
+                }
+                
+
+                
+            }
+            
+
+            
+           
+
+
+       </script>
+    </main>
+    
+
+
+</body>
+</html>
